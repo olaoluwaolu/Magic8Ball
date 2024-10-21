@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'Make public/private/etc show up as character rather than colored circle.
+skinparam classAttributeIconSize 0
+
+hide empty members
+
+class Magic8Ball {
+    - {static} DEFAULT_ANSWERS : String[] <<final>>
+    - answers : String[] <<final>>
+    + Magic8Ball()
+    + Magic8Ball(answers:String[])
+    + getAnswer() : String
+}
+note left of Magic8Ball::Magic8Ball()
+    Creates Magic8Ball using DEFAULT_ANSWERS
+end note
+note left of Magic8Ball::Magic8Ball(answers:String[])
+    Creates Magic8Ball using given answers.
+    Throws IllegalArgumentException if
+    given an empty array.
+end note
+note left of Magic8Ball::getAnswer()
+    Returns a randomly-chosen answer
+end note
+
+@enduml
