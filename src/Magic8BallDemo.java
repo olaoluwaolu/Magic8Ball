@@ -12,7 +12,7 @@
  * a jar file. IDEs vary in how they do this; check the IDE
  * documentation.
  */
-public class SocketDemo
+public class Magic8BallDemo
 {
     private final static String USAGE =
                 "Usage: java SocketDemo client <server name> <server port>\n"

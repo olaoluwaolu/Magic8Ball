@@ -4,9 +4,9 @@
 <li> Server
    <ol>
    <li> Open a terminal/command window.</li>
-   <li> cd to SocketDemo/out/production/SocketDemo</li>
-   <li> Enter 'java SocketDemo' to see the usage message.</li>
-   <li> Enter 'java SocketDemo server 4466' to start the server 
+   <li> cd to Magic8BallDemo/out/production/Magic8BallDemo</li>
+   <li> Enter 'java Magic8BallDemo' to see the usage message.</li>
+   <li> Enter 'java Magic8BallDemo server 4466' to start the server 
         on port 4466 (you can use any port in the User Ports 
         range that is not already in use on your computer).</li>
    <li> You should see a server startup message.</li>
@@ -16,8 +16,8 @@
 <li> Client
    <ol>
    <li> Open another terminal/command window.</li>
-   <li> cd to SocketDemo/out/production/SocketDemo</li>
-   <li> Enter 'java SocketDemo client localhost 4466' to start 
+   <li> cd to Magic8BallDemo/out/production/Magic8BallDemo</li>
+   <li> Enter 'java Magic8BallDemo client localhost 4466' to start 
         the client (if you used a different number for the server, 
         use that number here as well).</li>
    <li> You should see a message from the server.

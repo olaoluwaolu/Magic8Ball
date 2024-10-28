@@ -14,9 +14,9 @@ public class Server
 {
     // Strings sent to client.
     private static final String GREETING =
-            "Welcome to the echo server. Press just ENTER to end session.";
+            "The Magic 8 Ball says: Please enter a yes/no question.";
     private static final String GOOD_BYE =
-            "Ending echo server session.";
+            "“The Magic 8 Ball says: Good bye ... Live long, and prosper.";
 
     // Instance variables.
     private final int port;
