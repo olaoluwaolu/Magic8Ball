@@ -66,10 +66,9 @@ public class Server
                 String inString = fromClient.readLine();
                 Magic8Ball magic8Ball = new Magic8Ball();
                 while (inString != null && !inString.isEmpty()) {
-//                    System.out.println(inString); //print client input in server
-//                    toClient.println(inString); //send client input to client
-                    System.out.println(magic8Ball.getAnswer()); //get answer from Magic8Ball & print to server
-                    toClient.println(magic8Ball.getAnswer()); //print answer from Magic8Ball to client
+                    String magic8Response = magic8Ball.getAnswer();
+                    System.out.println(magic8Response); //get answer from Magic8Ball & print to server
+                    toClient.println(magic8Response); //print answer from Magic8Ball to client
                     inString = fromClient.readLine();
                 }
                 toClient.println(GOOD_BYE);

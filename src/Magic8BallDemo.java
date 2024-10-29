@@ -17,8 +17,8 @@ import java.util.Random;
 public class Magic8BallDemo
 {
     private final static String USAGE =
-                "Usage: java SocketDemo client <server name> <server port>\n"
-              + "       java SocketDemo server <server port>\n"
+                "Usage: java Magic8BallDemo client <server name> <server port>\n"
+              + "       java Magic8BallDemo server <server port>\n"
               + "    where <server port> is in the range 1024-49151.";
 
     public static void main(String[] args)
