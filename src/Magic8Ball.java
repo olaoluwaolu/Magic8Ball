@@ -32,7 +32,7 @@ public class Magic8Ball {
      * @throws IllegalArgumentException if array is empty.
      */
     public Magic8Ball(String[] myAnswers) throws IllegalArgumentException {
-        String[] answersCopy = Arrays.copyOf(myAnswers,myAnswers.length); //create a copy
+        String[] answersCopy = Arrays.copyOf(myAnswers, myAnswers.length); //create a copy
         this.answers = answersCopy;
         if (myAnswers.length == 0) {
             throw new IllegalArgumentException("Array should not be empty.");
