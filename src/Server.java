@@ -53,24 +53,23 @@ public class Server
                     // Wait for connection.
                     Socket clientSocket = serverSocket.accept();
                     // Build buffered reader on client socket.
-                    InputStream inStream = clientSocket.getInputStream();
-                    InputStreamReader inStreamReader =
-                            new InputStreamReader(inStream);
                     BufferedReader fromClient =
-                            new BufferedReader(inStreamReader);
+                            new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                     // Build PrintWriter on client socket.
-                    OutputStream outStream = clientSocket.getOutputStream();
                     PrintWriter toClient =
-                            new PrintWriter(outStream, true)
+                            new PrintWriter(clientSocket.getOutputStream(), true)
             )
             {
                 // Connection made. Greet client.
                 toClient.println(GREETING);
                 // Converse with client.
                 String inString = fromClient.readLine();
+                Magic8Ball magic8Ball = new Magic8Ball();
                 while (inString != null && !inString.isEmpty()) {
-                    System.out.println(inString);
-                    toClient.println(inString);
+//                    System.out.println(inString); //print client input in server
+//                    toClient.println(inString); //send client input to client
+                    System.out.println(magic8Ball.getAnswer()); //get answer from Magic8Ball & print to server
+                    toClient.println(magic8Ball.getAnswer()); //print answer from Magic8Ball to client
                     inString = fromClient.readLine();
                 }
                 toClient.println(GOOD_BYE);

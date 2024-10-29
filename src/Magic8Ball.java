@@ -19,8 +19,6 @@ public class Magic8Ball {
      * Creates the Magic8Ball using the default answers
      */
     public Magic8Ball(){
-        int random = new Random().nextInt(DEFAULT_ANSWERS.length); //random number
-        System.out.println(DEFAULT_ANSWERS[random]); //print an element
     }
 
     /**
@@ -34,8 +32,6 @@ public class Magic8Ball {
         if (answers.length == 0) {
             throw new IllegalArgumentException("Array should not be empty.");
         }
-        int random = new Random().nextInt(answers.length); //random number
-        System.out.println(answers[random]); //print an element
     }
 
     /**
