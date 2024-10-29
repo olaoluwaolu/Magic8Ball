@@ -13,8 +13,7 @@ import java.util.Scanner;
  * end of a line of input. The server's response is assumed to be
  * a single line of text, which is printed when received.
  */
-public class Client
-{
+public class Client {
     private final String hostname;
     private final int port;
     private final String prompt;
@@ -26,8 +25,7 @@ public class Client
      * @param port     the service's port on the server.
      * @throws IllegalArgumentException if port not in range [1-49151]
      */
-    public Client(String hostname, int port)
-    {
+    public Client(String hostname, int port) {
         if (port < 1 || port > 49151) {
             throw new IllegalArgumentException(
                     "Port " + port + " not in range 1 - 49151.");
@@ -44,8 +42,7 @@ public class Client
      * @throws UnknownHostException if hostname is not resolvable.
      * @throws IOException          if socket creation, wrapping, or IO fails.
      */
-    public void start() throws UnknownHostException, IOException
-    {
+    public void start() throws UnknownHostException, IOException {
         Scanner keyboard = new Scanner(System.in);
         try (
                 // Create client socket on local port.
@@ -57,8 +54,7 @@ public class Client
                 // Build PrintWriter on client socket.
                 PrintWriter outWriter =
                         new PrintWriter(socket.getOutputStream(), true)
-        )
-        {
+        ) {
             String userInput;
             System.out.println(inReader.readLine());    // Get server hello.
             do {

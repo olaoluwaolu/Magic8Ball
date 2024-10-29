@@ -10,13 +10,12 @@ import java.net.Socket;
  * response. The connection terminates when the client sends an
  * empty string.
  */
-public class Server
-{
+public class Server {
     // Strings sent to client.
     private static final String GREETING =
             "The Magic 8 Ball says: Please enter a yes/no question.";
     private static final String GOOD_BYE =
-            "“The Magic 8 Ball says: Good bye ... Live long, and prosper.";
+            "The Magic 8 Ball says: Good bye ... Live long, and prosper.";
 
     // Instance variables.
     private final int port;
@@ -28,8 +27,7 @@ public class Server
      * @throws IllegalArgumentException if port not in range [1024, 49151].
      */
     public Server(int port)
-            throws IllegalArgumentException
-    {
+            throws IllegalArgumentException {
         if (port < 1024 || port > 49151) {
             throw new IllegalArgumentException(
                     "Port " + port + " not in range 1024-49151.");
@@ -44,36 +42,36 @@ public class Server
      * @throws IOException if ServerSocket creation, connection
      *                     acceptance, wrapping, or IO fails.
      */
-    public void start() throws IOException
-    {
+    public void start() throws IOException {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Server starting on port " + port + "."
                     + " Ctrl+C to exit.");
-            try (
-                    // Wait for connection.
-                    Socket clientSocket = serverSocket.accept();
-                    // Build buffered reader on client socket.
-                    BufferedReader fromClient =
-                            new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                    // Build PrintWriter on client socket.
-                    PrintWriter toClient =
-                            new PrintWriter(clientSocket.getOutputStream(), true)
-            )
-            {
-                // Connection made. Greet client.
-                toClient.println(GREETING);
-                // Converse with client.
-                String inString = fromClient.readLine();
-                Magic8Ball magic8Ball = new Magic8Ball();
-                while (inString != null && !inString.isEmpty()) {
-                    String magic8Response = magic8Ball.getAnswer();
-                    System.out.println(magic8Response); //get answer from Magic8Ball & print to server
-                    toClient.println(magic8Response); //print answer from Magic8Ball to client
-                    inString = fromClient.readLine();
-                }
-                toClient.println(GOOD_BYE);
-                System.out.println("Client terminated connection.");
-            }   // Streams, client socket closed by try-with-resources.
-        } // ServerSocket closed by try-with-resources.
+            while (true) {
+                try (
+                        // Wait for connection.
+                        Socket clientSocket = serverSocket.accept();
+                        // Build buffered reader on client socket.
+                        BufferedReader fromClient =
+                                new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                        // Build PrintWriter on client socket.
+                        PrintWriter toClient =
+                                new PrintWriter(clientSocket.getOutputStream(), true)
+                ) {
+                    // Connection made. Greet client.
+                    toClient.println(GREETING);
+                    // Converse with client.
+                    String inString = fromClient.readLine();
+                    Magic8Ball magic8Ball = new Magic8Ball();
+                    while (inString != null && !inString.isEmpty()) {
+                        String magic8Response = magic8Ball.getAnswer();
+                        System.out.println(magic8Response); //get answer from Magic8Ball & print to server
+                        toClient.println(magic8Response); //print answer from Magic8Ball to client
+                        inString = fromClient.readLine();
+                    }
+                    toClient.println(GOOD_BYE);
+                    System.out.println("Client terminated connection.");
+                }   // Streams, client socket closed by try-with-resources.
+            } // ServerSocket closed by try-with-resources.
+        }
     }
 }

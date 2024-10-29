@@ -14,20 +14,17 @@ import java.util.Random;
  * a jar file. IDEs vary in how they do this; check the IDE
  * documentation.
  */
-public class Magic8BallDemo
-{
+public class Magic8BallDemo {
     private final static String USAGE =
-                "Usage: java Magic8BallDemo client <server name> <server port>\n"
-              + "       java Magic8BallDemo server <server port>\n"
-              + "    where <server port> is in the range 1024-49151.";
+            "Usage: java Magic8BallDemo client <server name> <server port>\n"
+                    + "       java Magic8BallDemo server <server port>\n"
+                    + "    where <server port> is in the range 1024-49151.";
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         if (args.length < 2) {
             System.err.println(USAGE);
         } else if (args.length == 2
-                && args[0].equalsIgnoreCase("server"))
-        {
+                && args[0].equalsIgnoreCase("server")) {
             try {
                 int port = Integer.parseInt(args[1]);
                 Server server = new Server(port);
@@ -40,8 +37,7 @@ public class Magic8BallDemo
                 System.err.println(USAGE);
             }
         } else if (args.length == 3
-                && args[0].equalsIgnoreCase("client"))
-        {
+                && args[0].equalsIgnoreCase("client")) {
             try {
                 String serverName = args[1];
                 int port = Integer.parseInt(args[2]);
