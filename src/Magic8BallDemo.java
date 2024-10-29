@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Main program. Based on command-line arguments (see USAGE
  * string), creates and starts either a client or a server.
