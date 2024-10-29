@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 
 public class Magic8Ball {
     private static final String[] DEFAULT_ANSWERS = {
@@ -22,25 +23,27 @@ public class Magic8Ball {
             "Outlook not so good",
             "Very doubtful"};
 
-    private final String[] answers = {};
+    private final String[] answers; //make it final?
+
+    /**
+     * Creates a server for character-based exchanges.
+     *
+     * @param myAnswers user-specified answers.
+     * @throws IllegalArgumentException if array is empty.
+     */
+    public Magic8Ball(String[] myAnswers) throws IllegalArgumentException {
+        String[] answersCopy = Arrays.copyOf(myAnswers,myAnswers.length); //create a copy
+        this.answers = answersCopy;
+        if (myAnswers.length == 0) {
+            throw new IllegalArgumentException("Array should not be empty.");
+        }
+    }
 
     /**
      * Creates the Magic8Ball using the default answers
      */
     public Magic8Ball() {
-        Magic8Ball obj = new Magic8Ball(DEFAULT_ANSWERS);
-    }
-
-    /**
-     * Creates a server for character-based exchanges.
-     *
-     * @param answers user-specified answers.
-     * @throws IllegalArgumentException if array is empty.
-     */
-    public Magic8Ball(String[] answers) throws IllegalArgumentException {
-        if (answers.length == 0) {
-            throw new IllegalArgumentException("Array should not be empty.");
-        }
+        this(DEFAULT_ANSWERS);
     }
 
     /**
@@ -49,7 +52,7 @@ public class Magic8Ball {
      * @return returns a string with a random answer from the default answer array
      */
     public String getAnswer() {
-        int random = new Random().nextInt(DEFAULT_ANSWERS.length); //random number
-        return DEFAULT_ANSWERS[random];
+        int random = new Random().nextInt(answers.length); //random number
+        return answers[random];
     }
 }
