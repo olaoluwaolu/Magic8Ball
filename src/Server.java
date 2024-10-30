@@ -61,9 +61,9 @@ public class Server {
                     toClient.println(GREETING);
                     // Converse with client.
                     String inString = fromClient.readLine();
-                    String[] ans = {"ans1", "an2", "ans3", "ans4", "ans5", "ans6", "ans7", "ans8", "ans9", "ans10", "ans11"};
-                    Magic8Ball magic8Ball = new Magic8Ball(ans);
-//                    Magic8Ball magic8Ball = new Magic8Ball();
+//                    String[] ans = {"ans1", "an2", "ans3", "ans4", "ans5", "ans6", "ans7", "ans8", "ans9", "ans10", "ans11"};
+//                    Magic8Ball magic8Ball = new Magic8Ball(ans);
+                    Magic8Ball magic8Ball = new Magic8Ball();
                     while (inString != null && !inString.isEmpty()) {
                         String magic8Response = magic8Ball.getAnswer();
                         System.out.println(magic8Response); //get answer from Magic8Ball & print to server
